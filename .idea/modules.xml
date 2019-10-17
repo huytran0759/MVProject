@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FakeAmazonReviewDetection.iml" filepath="$PROJECT_DIR$/FakeAmazonReviewDetection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MVProject.iml" filepath="$PROJECT_DIR$/MVProject.iml" />
     </modules>
   </component>
 </project>

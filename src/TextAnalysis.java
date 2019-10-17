@@ -5,6 +5,7 @@ import java.util.Locale;
 public class TextAnalysis {
 
     public static void main(String[] args) {
+        System.out.println("hi i was here");
     }
 
     private static ArrayList<String> splitIntoSentences(String text) {
