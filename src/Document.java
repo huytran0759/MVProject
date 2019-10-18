@@ -6,6 +6,7 @@ public class Document {
 
     public Document(String text) {
         this.text = text;
+        this.isFake = false;
     }
 
 }

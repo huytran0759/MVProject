@@ -4,6 +4,9 @@ import java.util.Locale;
 
 public class TextAnalysis {
 
+    public static void main(String[] args) {
+    }
+
     private static ArrayList<String> splitIntoSentences(String text) {
         ArrayList<String> output = new ArrayList<>();
 
