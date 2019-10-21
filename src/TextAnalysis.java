@@ -1,9 +1,59 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class TextAnalysis {
+
+
+    public static ArrayList<Review> readReviews(String filename){
+        Scanner scanner;
+        ArrayList<Review> reviews = new ArrayList<Review>();
+
+        try {
+
+            scanner = new Scanner(new FileReader(filename));
+            scanner.nextLine();
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+
+
+                reviews.add(processLine(line));
+            }
+
+            scanner.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found " + filename);
+        }
+
+        return reviews;
+    }
+
+    private static Review processLine(String line){
+        String[]info = line.split("\t");
+
+
+
+        int docID = Integer.parseInt(info[0].trim());
+        String label = info[1].trim();
+        int rating = Integer.parseInt(info[2].trim());
+        String verifiedPurchase = info[3].trim();
+        String productCategory = info[4].trim();
+        String productID = info[5].trim();
+        String productTitle = info[6].trim();
+        String reviewTitle = info[7].trim();
+        String reviewText = info[8].trim();
+
+
+
+        return new Review(docID, label, rating, verifiedPurchase, productCategory, productID, productTitle, reviewTitle, reviewText);
+
+    }
 
     public static ArrayList<String> splitIntoSentences(String text) {
         ArrayList<String> output = new ArrayList<>();
