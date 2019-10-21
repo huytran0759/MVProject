@@ -4,16 +4,27 @@ public class Review {
 
     private double fakenessScore;
     private boolean isFake;
-    private int rating;
-    private String productName, text;
+    private int id, rating;
+    private String label, productName, text, productCategory, productID, productTitle, reviewTitle, reviewText;
+    private boolean verifiedPurchase;
     private ArrayList<String> sentences, words;
 
-    public Review(String productName, String text, int rating) {
-        this.productName = productName;
-        this.text = text;
+    public Review(int id, String label, int rating, String verifiedPurchase, String productCategory, String productID, String productTitle, String reviewTitle, String reviewText) {
+        this.id = id;
+        this.label = label;
         this.rating = rating;
-        this.sentences = TextAnalysis.splitIntoSentences(text);
-        this.words = TextAnalysis.splitIntoWords(text);
+        if (verifiedPurchase.equals("y")) {
+            this.verifiedPurchase = true;
+        } else {
+            this.verifiedPurchase = false;
+        }
+        this.productCategory = productCategory;
+        this.productID = productID;
+        this.productTitle = productTitle;
+        this.reviewTitle = reviewTitle;
+        this.reviewText = reviewText;
+        this.sentences = TextAnalysis.splitIntoSentences(reviewText);
+        this.words = TextAnalysis.splitIntoWords(reviewText);
         this.fakenessScore = 0.0;
         this.isFake = false;
     }
@@ -24,6 +35,10 @@ public class Review {
 
     public ArrayList<String> getWords() {
         return words;
+    }
+
+    public String getText() {
+        return text;
     }
 
     public int getWordLength() {
