@@ -5,8 +5,8 @@ public class FakeReviewTests {
 
     private static final int FAKE_REVIEW_WORD_THRESHOLD = 6;
     private static final String[] SPONSORED_WORDS = {"free", "sponsored", "sponsor"};
-    private static final String[] EXTREME_WORDS = {"perfect", "best", "worst"};
-    private static final String[] TRANSITION_WORDS = {"but", "however", "even though", "although"};
+    private static final String[] EXTREME_WORDS = {"perfect", "best", "worst", "absolutely"};
+    private static final String[] SUGGESTIVE_WORDS = {"but", "however", "even though", "although", "think"};
 
     public static boolean passesLengthTest(Review review) {
         return review.getWordLength() > FAKE_REVIEW_WORD_THRESHOLD;
@@ -22,9 +22,18 @@ public class FakeReviewTests {
 
         return (review.getRating() == 3);
 
-
     }
 
+    public static boolean containsQuestion(Review review){
+
+        for(String word : review.getWords()){
+            if(word.contains("?")){
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     public static boolean containsLink(Review review){
         for (String word : review.getWords()) {
