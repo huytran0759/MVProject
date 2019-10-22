@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FakeReviewTests {
 
@@ -8,6 +9,17 @@ public class FakeReviewTests {
 
     public static boolean passesLengthTest(Review review) {
         return review.getWordLength() > FAKE_REVIEW_WORD_THRESHOLD;
+    }
+
+    public static boolean containsLink(Review review){
+        ArrayList<String> linkTraits = new ArrayList<>(Arrays.asList(".com", "http",".net","www"));
+        for (String word : review.getWords()) {
+            if(linkTraits.contains(word)){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static boolean isSponsored(Review review) {
