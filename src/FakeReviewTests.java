@@ -11,6 +11,24 @@ public class FakeReviewTests {
         return review.getWordLength() > FAKE_REVIEW_WORD_THRESHOLD;
     }
 
+    public static boolean isAVerifiedPurchase(Review review){
+        return review.isVerifiedPurchase();
+    }
+
+    public static boolean containsQuestion(Review review){
+        for(String word: review.getWords()){
+            if(word.contains("?")){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isAThree(Review review){
+
+        return (review.getRating() == 3);
+    }
+
     public static boolean containsLink(Review review){
         for (String word : review.getWords()) {
             if(word.contains("http://") || word.contains(".com") || word.contains(".net")){
@@ -40,15 +58,15 @@ public class FakeReviewTests {
         return false;
     }
 
-    public static boolean containsThreeExclamations(Review review) {
-        String text = review.getReviewText();
-        int exclamationCount = 0;
-        for (int i = 0; i < text.length(); i++) {
-            if (text.substring(i, i + 1).equals("!")) {
-                exclamationCount++;
-            }
-        }
-        return exclamationCount > 3;
-    }
+//    public static boolean containsThreeExclamations(Review review) {
+//        String text = review.getReviewText();
+//        int exclamationCount = 0;
+//        for (int i = 0; i < text.length(); i++) {
+//            if (text.substring(i, i + 1).equals("!")) {
+//                exclamationCount++;
+//            }
+//        }
+//        return exclamationCount > 3;
+//    }
 
 }
