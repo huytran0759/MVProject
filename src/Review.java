@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class Review {
 
+    private static final double FAKENESS_THRESHOLD = 1;
+
     private double fakenessScore;
     private boolean isFake;
     private int id, rating;
@@ -87,6 +89,9 @@ public class Review {
 
     public void addToFakeScore(double amount) {
         fakenessScore += amount;
+        if (fakenessScore >= FAKENESS_THRESHOLD) {
+            isFake = true;
+        }
     }
 
 }
