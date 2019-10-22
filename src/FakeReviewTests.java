@@ -30,4 +30,15 @@ public class FakeReviewTests {
         return false;
     }
 
+    public static boolean containsThreeExclamations(Review review) {
+        String text = review.getReviewText();
+        int exclamationCount = 0;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.substring(i, i + 1).equals("!")) {
+                exclamationCount++;
+            }
+        }
+        return exclamationCount > 3;
+    }
+
 }

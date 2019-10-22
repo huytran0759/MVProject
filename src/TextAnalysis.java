@@ -1,4 +1,3 @@
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.text.BreakIterator;
@@ -8,7 +7,6 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class TextAnalysis {
-
 
     public static ArrayList<Review> readReviews(String filename){
         Scanner scanner;
@@ -34,7 +32,7 @@ public class TextAnalysis {
         return reviews;
     }
 
-    private static Review processLine(String line){
+    public static Review processLine(String line){
         String[]info = line.split("\t");
 
 
