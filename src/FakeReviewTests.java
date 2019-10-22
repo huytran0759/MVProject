@@ -12,13 +12,11 @@ public class FakeReviewTests {
     }
 
     public static boolean containsLink(Review review){
-        ArrayList<String> linkTraits = new ArrayList<>(Arrays.asList(".com", "http",".net","www"));
         for (String word : review.getWords()) {
-            if(linkTraits.contains(word)){
+            if(word.contains("http://") || word.contains(".com") || word.contains(".net")){
                 return true;
             }
         }
-
         return false;
     }
 
