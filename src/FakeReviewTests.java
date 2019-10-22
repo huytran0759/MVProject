@@ -5,11 +5,26 @@ public class FakeReviewTests {
 
     private static final int FAKE_REVIEW_WORD_THRESHOLD = 6;
     private static final String[] SPONSORED_WORDS = {"free", "sponsored", "sponsor"};
-    private static final String[] EXTREME_WORDS = {"perfect", "best"};
+    private static final String[] EXTREME_WORDS = {"perfect", "best", "worst"};
+    private static final String[] TRANSITION_WORDS = {"but", "however", "even though", "although"};
 
     public static boolean passesLengthTest(Review review) {
         return review.getWordLength() > FAKE_REVIEW_WORD_THRESHOLD;
     }
+
+
+    public static boolean isAVerifiedPurchase(Review review){
+
+        return (review.isVerifiedPurchase());
+    }
+
+    public static boolean isAThree(Review review){
+
+        return (review.getRating() == 3);
+
+
+    }
+
 
     public static boolean containsLink(Review review){
         for (String word : review.getWords()) {
