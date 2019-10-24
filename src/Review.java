@@ -9,7 +9,7 @@ public class Review {
     private int id, rating;
     private String label, productName, productCategory, productID, reviewTitle, reviewText;
     private boolean verifiedPurchase;
-    private ArrayList<String> sentences, words;
+    private ArrayList<String> sentences, words, vocabulary;
 
     public Review(int id, String label, int rating, String verifiedPurchase, String productCategory, String productID, String productName, String reviewTitle, String reviewText) {
         this.id = id;
@@ -27,6 +27,7 @@ public class Review {
         this.reviewText = reviewText;
         this.sentences = TextAnalysis.splitIntoSentences(reviewText);
         this.words = TextAnalysis.splitIntoWords(reviewText);
+        this.vocabulary = TextAnalysis.splitIntoVocabulary(this.words);
         this.fakenessScore = 0.0;
         this.isFake = false;
     }

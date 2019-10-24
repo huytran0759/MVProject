@@ -95,4 +95,25 @@ public class TextAnalysis {
         return text.contains("http://") || text.contains(".com") || text.contains(".net");
     }
 
+    public static ArrayList<String> splitIntoVocabulary(ArrayList<String> words) {
+        ArrayList<String> vocabulary = new ArrayList<>();
+        for (String word : words) {
+            if (!vocabulary.contains(word)) {
+                vocabulary.add(word);
+            }
+        }
+        return vocabulary;
+    }
+
+    public static int getNumCaps(String text) {
+        String caps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        int count = 0;
+        for (int i = 0; i < text.length(); i++) {
+            if (caps.contains(text.substring(i, i + 1))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
 }

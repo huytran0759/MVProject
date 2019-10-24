@@ -2,7 +2,8 @@ import java.util.ArrayList;
 
 public class FakeReviewTests {
 
-    private static final int FAKE_REVIEW_WORD_THRESHOLD = 6;
+    private static final int FAKE_REVIEW_WORD_THRESHOLD = 78;
+//    private static final int FAKE_REVIEW_CAPS_THRESHOLD = ;
     private static final String[] SPONSORED_WORDS = {"sponsored", "sponsor"};
     private static final String[] EXTREME_WORDS = {"perfect", "best"};
 
@@ -67,5 +68,10 @@ public class FakeReviewTests {
         }
         return exclamationCount > 3;
     }
+
+//    public static boolean failsCapsTest(Review review) {
+//        String text = review.getReviewText();
+//        return TextAnalysis.getNumCaps(text) < FAKE_REVIEW_CAPS_THRESHOLD;
+//    }
 
 }

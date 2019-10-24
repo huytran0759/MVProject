@@ -10,19 +10,19 @@ public class Tester {
             if (review.isFake() && review.getLabel().equals("__label1__") || !review.isFake() && review.getLabel().equals("__label2__")) {
                 correct++;
             } else {
+                System.out.println(review.getLabel());
+                System.out.println(review.getFakenessScore());
                 System.out.println(review.getReviewText());
                 System.out.println("************************************************");
             }
         }
 
         System.out.println((double) correct / reviews.size());
-
     }
 
     public static void runAllTests(Review review) {
         if (FakeReviewTests.containsLink(review)) {
             review.addToFakeScore(5);
-            System.out.println("link");
         }
 //        if (FakeReviewTests.containsExtremeLanguage(review)) {
 //            review.addToFakeScore(1);
@@ -34,15 +34,12 @@ public class Tester {
 //        }
         if (FakeReviewTests.isSponsored(review)) {
             review.addToFakeScore(7);
-            System.out.println("sponsored");
         }
         if (FakeReviewTests.failsLengthTest(review)) {
             review.addToFakeScore(2);
-            System.out.println("length");
         }
         if (!FakeReviewTests.isAVerifiedPurchase(review)) {
             review.addToFakeScore(4);
-//            System.out.println("verified purchase");
         }
         if (FakeReviewTests.isAThree(review)) {
             review.addToFakeScore(-1);
@@ -50,5 +47,8 @@ public class Tester {
         if (FakeReviewTests.containsQuestion(review)) {
             review.addToFakeScore(-1);
         }
+//        if (FakeReviewTests.failsCapsTest(review)) {
+//            review.addToFakeScore(1);
+//        }
     }
 }
