@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FakeReviewTests {
 
@@ -7,8 +6,8 @@ public class FakeReviewTests {
     private static final String[] SPONSORED_WORDS = {"free", "sponsored", "sponsor"};
     private static final String[] EXTREME_WORDS = {"perfect", "best"};
 
-    public static boolean passesLengthTest(Review review) {
-        return review.getWordLength() > FAKE_REVIEW_WORD_THRESHOLD;
+    public static boolean failsLengthTest(Review review) {
+        return review.getWordLength() < FAKE_REVIEW_WORD_THRESHOLD;
     }
 
     public static boolean isAVerifiedPurchase(Review review){
@@ -58,15 +57,15 @@ public class FakeReviewTests {
         return false;
     }
 
-//    public static boolean containsThreeExclamations(Review review) {
-//        String text = review.getReviewText();
-//        int exclamationCount = 0;
-//        for (int i = 0; i < text.length(); i++) {
-//            if (text.substring(i, i + 1).equals("!")) {
-//                exclamationCount++;
-//            }
-//        }
-//        return exclamationCount > 3;
-//    }
+    public static boolean containsThreeExclamations(Review review) {
+        String text = review.getReviewText();
+        int exclamationCount = 0;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.substring(i, i + 1).equals("!")) {
+                exclamationCount++;
+            }
+        }
+        return exclamationCount > 3;
+    }
 
 }

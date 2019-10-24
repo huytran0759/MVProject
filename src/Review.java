@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Review {
 
-    private static final double FAKENESS_THRESHOLD = 1;
+    private static final double FAKENESS_THRESHOLD = 5;
 
     private double fakenessScore;
     private boolean isFake;
