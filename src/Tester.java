@@ -24,14 +24,14 @@ public class Tester {
             review.addToFakeScore(5);
             System.out.println("link");
         }
-        if (FakeReviewTests.containsExtremeLanguage(review)) {
-            review.addToFakeScore(1);
-            System.out.println("language");
-        }
-        if (FakeReviewTests.containsThreeExclamations(review)) {
-            review.addToFakeScore(2);
-            System.out.println("exclaim");
-        }
+//        if (FakeReviewTests.containsExtremeLanguage(review)) {
+//            review.addToFakeScore(1);
+//            System.out.println("language");
+//        }
+//        if (FakeReviewTests.containsThreeExclamations(review)) {
+//            review.addToFakeScore(2);
+//            System.out.println("exclaim");
+//        }
         if (FakeReviewTests.isSponsored(review)) {
             review.addToFakeScore(7);
             System.out.println("sponsored");
@@ -39,6 +39,16 @@ public class Tester {
         if (FakeReviewTests.failsLengthTest(review)) {
             review.addToFakeScore(2);
             System.out.println("length");
+        }
+        if (!FakeReviewTests.isAVerifiedPurchase(review)) {
+            review.addToFakeScore(4);
+//            System.out.println("verified purchase");
+        }
+        if (FakeReviewTests.isAThree(review)) {
+            review.addToFakeScore(-1);
+        }
+        if (FakeReviewTests.containsQuestion(review)) {
+            review.addToFakeScore(-1);
         }
     }
 }

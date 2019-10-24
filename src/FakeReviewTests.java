@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class FakeReviewTests {
 
     private static final int FAKE_REVIEW_WORD_THRESHOLD = 6;
-    private static final String[] SPONSORED_WORDS = {"free", "sponsored", "sponsor"};
+    private static final String[] SPONSORED_WORDS = {"sponsored", "sponsor"};
     private static final String[] EXTREME_WORDS = {"perfect", "best"};
 
     public static boolean failsLengthTest(Review review) {
@@ -30,7 +30,7 @@ public class FakeReviewTests {
 
     public static boolean containsLink(Review review){
         for (String word : review.getWords()) {
-            if(word.contains("http://") || word.contains(".com") || word.contains(".net")){
+            if(word.contains("http://") || word.contains(".com") || word.contains(".net") || word.contains("goo.gl")) {
                 return true;
             }
         }
