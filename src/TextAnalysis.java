@@ -13,16 +13,12 @@ public class TextAnalysis {
         ArrayList<Review> reviews = new ArrayList<Review>();
 
         try {
-
             scanner = new Scanner(new FileReader(filename));
             scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-
-
                 reviews.add(processLine(line));
             }
-
             scanner.close();
 
         } catch (FileNotFoundException e) {
@@ -114,6 +110,24 @@ public class TextAnalysis {
             }
         }
         return count;
+    }
+
+    public static ArrayList<String> readWordBin(String filepath) {
+        Scanner scanner;
+        ArrayList<String> stopWords = new ArrayList<String>();
+
+        try {
+            scanner = new Scanner(new FileReader(filepath));
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                stopWords.add(line);
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found " + filepath);
+        }
+
+        return stopWords;
     }
 
 }

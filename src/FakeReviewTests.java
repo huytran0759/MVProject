@@ -1,37 +1,43 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class FakeReviewTests {
 
     private static final int FAKE_REVIEW_WORD_THRESHOLD = 78;
+    private static final int FAKE_REVIEW_STOP_WORDS_THRESHOLD = 20;
+    //    private static final int NUM_PUNCTUATION_THRESHOLD = 2;
 //    private static final int FAKE_REVIEW_CAPS_THRESHOLD = ;
     private static final String[] SPONSORED_WORDS = {"sponsored", "sponsor"};
     private static final String[] EXTREME_WORDS = {"perfect", "best"};
+    private static final String[] PUNCTUATION = {".", "!", ";", ":", ","};
+    private static final ArrayList<String> STOP_WORDS = TextAnalysis.readWordBin("data/stopwords.txt");
 
     public static boolean failsLengthTest(Review review) {
         return review.getWordLength() < FAKE_REVIEW_WORD_THRESHOLD;
     }
 
-    public static boolean isAVerifiedPurchase(Review review){
+    public static boolean isAVerifiedPurchase(Review review) {
         return review.isVerifiedPurchase();
     }
 
-    public static boolean containsQuestion(Review review){
-        for(String word: review.getWords()){
-            if(word.contains("?")){
+    public static boolean containsQuestion(Review review) {
+        for (String word : review.getWords()) {
+            if (word.contains("?")) {
                 return true;
             }
         }
         return false;
     }
 
-    public static boolean isAThree(Review review){
+    public static boolean isAThree(Review review) {
 
         return (review.getRating() == 3);
     }
 
-    public static boolean containsLink(Review review){
+    public static boolean containsLink(Review review) {
         for (String word : review.getWords()) {
-            if(word.contains("http://") || word.contains(".com") || word.contains(".net") || word.contains("goo.gl")) {
+            if (word.contains("http://") || word.contains(".com") || word.contains(".net") || word.contains("goo.gl")) {
                 return true;
             }
         }
@@ -68,6 +74,29 @@ public class FakeReviewTests {
         }
         return exclamationCount > 3;
     }
+
+    public static boolean failsStopWordsTest(Review review) {
+        int stopWordCount = 0;
+        ArrayList<String> words = review.getWords();
+        for (String word : words) {
+            if (STOP_WORDS.contains(word)) {
+                stopWordCount++;
+            }
+        }
+        return stopWordCount < FAKE_REVIEW_STOP_WORDS_THRESHOLD;
+    }
+
+//    public static boolean failsPunctuationTest(Review review) {
+//        int punctuationCount = 0;
+//        String text = review.getReviewText();
+//        List<String> punctuationList =  Arrays.asList(PUNCTUATION);
+//        for (int i = 0; i < text.length(); i++) {
+//            if (punctuationList.contains(text.substring(i, i + 1))) {
+//                punctuationCount++;
+//            }
+//        }
+//        return punctuationCount < NUM_PUNCTUATION_THRESHOLD;
+//  }
 
 //    public static boolean failsCapsTest(Review review) {
 //        String text = review.getReviewText();
