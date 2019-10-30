@@ -11,7 +11,17 @@ public class Review {
     private boolean verifiedPurchase;
     private ArrayList<String> sentences, words, vocabulary;
 
+    public Review(String reviewText) {
+        this.reviewText = reviewText;
+        this.fakenessScore = 0.0;
+        this.isFake = false;
+        this.sentences = TextAnalysis.splitIntoSentences(reviewText);
+        this.words = TextAnalysis.splitIntoWords(reviewText);
+        this.vocabulary = TextAnalysis.splitIntoVocabulary(this.words);
+    }
+
     public Review(int id, String label, int rating, String verifiedPurchase, String productCategory, String productID, String productName, String reviewTitle, String reviewText) {
+        this(reviewText);
         this.id = id;
         this.label = label;
         this.rating = rating;
@@ -25,11 +35,6 @@ public class Review {
         this.productName = productName;
         this.reviewTitle = reviewTitle;
         this.reviewText = reviewText;
-        this.sentences = TextAnalysis.splitIntoSentences(reviewText);
-        this.words = TextAnalysis.splitIntoWords(reviewText);
-        this.vocabulary = TextAnalysis.splitIntoVocabulary(this.words);
-        this.fakenessScore = 0.0;
-        this.isFake = false;
     }
 
     public double getFakenessScore() {
