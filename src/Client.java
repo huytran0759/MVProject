@@ -7,6 +7,10 @@ public class Client {
         String reviewText = scanner.nextLine();
         Review review = new Review(reviewText);
         Tester.runAllTests(review);
-        System.out.println(review.isFake());
+        if (review.isFake()) {
+            System.out.println("Fake Review");
+        } else {
+            System.out.println("Real Review");
+        }
     }
 }
