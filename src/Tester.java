@@ -20,32 +20,6 @@ public class Tester {
         System.out.println((double) correct / reviews.size());
     }
 
-    public static void get50Tests() {
-        ArrayList<Review> reviews = TextAnalysis.readReviews("data/amazon_reviews.txt");
-        int realReviews = 0;
-        int fakeReviews = 0;
-        for (Review review : reviews) {
-            runAllTests(review);
-            if (review.getLabel().equals("__label1__") && fakeReviews < 500) {
-                fakeReviews++;
-                System.out.print(review.getId() + "\tFake Review\tProgram predicts: ");
-                if (review.isFake()) {
-                    System.out.println("fake");
-                } else {
-                    System.out.println("real");
-                }
-            } else if (review.getLabel().equals("__label2__") && realReviews < 500) {
-                realReviews++;
-                System.out.print(review.getId() + "\tReal Review\tProgram predicts: ");
-                if (review.isFake()) {
-                    System.out.println("fake");
-                } else {
-                    System.out.println("real");
-                }
-            }
-        }
-    }
-
     public static void runAllTestsView(Review review) {
         if (FakeReviewTests.containsLink(review)) {
             System.out.println("link");
@@ -122,5 +96,35 @@ public class Tester {
 //        if (FakeReviewTests.failsPunctuationTest(review)) {
 //            review.addToFakeScore(1);
 //        }
+    }
+
+    public static void runAllTextOnlyTests(Review review) {
+        if (FakeReviewTests.containsLink(review)) {
+            review.addToFakeScore(5);
+        }
+//        if (FakeReviewTests.containsExtremeLanguage(review)) {
+//            review.addToFakeScore(1);
+//            System.out.println("language");
+//        }
+//        if (FakeReviewTests.containsThreeExclamations(review)) {
+//            review.addToFakeScore(2);
+//            System.out.println("exclaim");
+//        }
+        if (FakeReviewTests.isSponsored(review)) {
+            review.addToFakeScore(7);
+        }
+        if (FakeReviewTests.failsLengthTest(review)) {
+            review.addToFakeScore(2);
+        }
+        if (FakeReviewTests.containsQuestion(review)) {
+            review.addToFakeScore(-1);
+        }
+//        if (FakeReviewTests.failsCapsTest(review)) {
+//            review.addToFakeScore(1);
+//        }
+        if (FakeReviewTests.failsStopWordsTest(review)) {
+            review.addToFakeScore(1);
+        }
+
     }
 }
