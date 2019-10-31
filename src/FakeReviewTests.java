@@ -1,16 +1,14 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class FakeReviewTests {
 
     private static final int FAKE_REVIEW_WORD_THRESHOLD = 78;
     private static final int FAKE_REVIEW_STOP_WORDS_THRESHOLD = 20;
     //    private static final int NUM_PUNCTUATION_THRESHOLD = 2;
-//    private static final int FAKE_REVIEW_CAPS_THRESHOLD = ;
+    //    private static final int FAKE_REVIEW_CAPS_THRESHOLD = ;
     private static final String[] SPONSORED_WORDS = {"sponsored", "sponsor"};
     private static final String[] EXTREME_WORDS = {"perfect", "best"};
-    private static final String[] PUNCTUATION = {".", "!", ";", ":", ","};
+    //    private static final String[] PUNCTUATION = {".", "!", ";", ":", ","};
     private static final ArrayList<String> STOP_WORDS = TextAnalysis.readWordBin("data/stopwords.txt");
 
     public static boolean failsLengthTest(Review review) {

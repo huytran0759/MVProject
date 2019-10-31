@@ -61,7 +61,7 @@ public class Tester {
 
     public static void runAllTests(Review review) {
         if (FakeReviewTests.containsLink(review)) {
-            review.addToFakeScore(5);
+            review.addToFakeScore(7);
         }
 //        if (FakeReviewTests.containsExtremeLanguage(review)) {
 //            review.addToFakeScore(1);
@@ -75,7 +75,7 @@ public class Tester {
             review.addToFakeScore(7);
         }
         if (FakeReviewTests.failsLengthTest(review)) {
-            review.addToFakeScore(2);
+            review.addToFakeScore(1);
         }
         if (!FakeReviewTests.isAVerifiedPurchase(review)) {
             review.addToFakeScore(4);
@@ -125,6 +125,5 @@ public class Tester {
         if (FakeReviewTests.failsStopWordsTest(review)) {
             review.addToFakeScore(1);
         }
-
     }
 }
