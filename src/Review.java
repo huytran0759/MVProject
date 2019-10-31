@@ -98,6 +98,9 @@ public class Review {
         if (fakenessScore >= FAKENESS_THRESHOLD) {
             isFake = true;
         }
+        if (fakenessScore < FAKENESS_THRESHOLD) {
+            isFake = false;
+        }
     }
 
 }

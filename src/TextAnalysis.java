@@ -11,11 +11,11 @@ public class TextAnalysis {
     public static ArrayList<Review> readReviews(String filename){
         Scanner scanner;
         ArrayList<Review> reviews = new ArrayList<Review>();
-
+        int count = 0;
         try {
             scanner = new Scanner(new FileReader(filename));
             scanner.nextLine();
-            while (scanner.hasNextLine()) {
+            while (scanner.hasNextLine() && count < 20000) {
                 String line = scanner.nextLine();
                 reviews.add(processLine(line));
             }
