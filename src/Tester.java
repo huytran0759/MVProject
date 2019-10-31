@@ -2,14 +2,13 @@ import java.util.ArrayList;
 
 public class Tester {
     public static void main(String[] args) {
-        // run all tests and add to fakeness score if passes
         int correct = 0;
         int correctFake = 0;
         int correctReal = 0;
         ArrayList<Review> reviews = TextAnalysis.readReviews("data/amazon_reviews.txt");
         for (Review review : reviews) {
             runAllTests(review);
-            if (review.isFake() && review.getLabel().equals("__label1__") ||!review.isFake() && review.getLabel().equals("__label2__")) {
+            if (review.isFake() && review.getLabel().equals("__label1__") || !review.isFake() && review.getLabel().equals("__label2__")) {
                 correct++;
                 if (review.isFake() && review.getLabel().equals("__label1__")) {
                     correctFake++;
@@ -37,14 +36,6 @@ public class Tester {
         if (FakeReviewTests.containsLink(review)) {
             System.out.println("link");
         }
-//        if (FakeReviewTests.containsExtremeLanguage(review)) {
-//            review.addToFakeScore(1);
-//            System.out.println("language");
-//        }
-//        if (FakeReviewTests.containsThreeExclamations(review)) {
-//            review.addToFakeScore(2);
-//            System.out.println("exclaim");
-//        }
         if (FakeReviewTests.isSponsored(review)) {
             System.out.println("sponsored");
         }
@@ -54,38 +45,24 @@ public class Tester {
         if (!FakeReviewTests.isAVerifiedPurchase(review)) {
             System.out.println("verified");
         }
-//        if (FakeReviewTests.isAThree(review)) {
-//            System.out.println("three");
-//        }
         if (FakeReviewTests.containsThreeQuestion(review)) {
             System.out.println("question");
         }
-//        if (FakeReviewTests.failsCapsTest(review)) {
-//            review.addToFakeScore(1);
-//        }
         if (FakeReviewTests.failsStopWordsTest(review)) {
             System.out.println("stopWords");
         }
         if (FakeReviewTests.containsReturn(review)) {
             System.out.println("return");
         }
-
-//        if (FakeReviewTests.failsPunctuationTest(review)) {
-//            review.addToFakeScore(1);
-//        }
+        if (FakeReviewTests.categoryIsHealth(review)) {
+            System.out.println("health");
+        }
     }
 
     public static void runAllTests(Review review) {
         if (FakeReviewTests.containsLink(review)) {
             review.addToFakeScore(7);
         }
-//        if (FakeReviewTests.containsExtremeLanguage(review)) {
-//            review.addToFakeScore(1);
-//            System.out.println("language");
-//        }
-//        if (FakeReviewTests.containsThreeExclamations(review)) {
-//            review.addToFakeScore(-0.25);
-//        }
         if (FakeReviewTests.isSponsored(review)) {
             review.addToFakeScore(7);
         }
@@ -95,60 +72,41 @@ public class Tester {
         if (!FakeReviewTests.isAVerifiedPurchase(review)) {
             review.addToFakeScore(4);
         }
-//        if (FakeReviewTests.isAThree(review)) {
-//            review.addToFakeScore(-0.25);
-//        }
         if (FakeReviewTests.containsThreeQuestion(review)) {
             review.addToFakeScore(-0.5);
         }
-//        if (FakeReviewTests.failsCapsTest(review)) {
-//            review.addToFakeScore(1);
-//        }
         if (FakeReviewTests.failsStopWordsTest(review)) {
             review.addToFakeScore(1);
         }
-
         if (FakeReviewTests.containsReturn(review)) {
             review.addToFakeScore(-0.5);
         }
-
         if (FakeReviewTests.categoryIsHealth(review)) {
             review.addToFakeScore(-0.5);
         }
-
-//        if (FakeReviewTests.containsUncertaintyWords(review)) {
-//            review.addToFakeScore(-0.25);
-//        }
-//        if (FakeReviewTests.failsPunctuationTest(review)) {
-//            review.addToFakeScore(1);
-//        }
     }
 
     public static void runAllTextOnlyTests(Review review) {
         if (FakeReviewTests.containsLink(review)) {
-            review.addToFakeScore(5);
-        }
-//        if (FakeReviewTests.containsExtremeLanguage(review)) {
-//            review.addToFakeScore(1);
-//            System.out.println("language");
-//        }
-        if (FakeReviewTests.containsThreeExclamations(review)) {
-            review.addToFakeScore(-1);
+            review.addToFakeScore(7);
         }
         if (FakeReviewTests.isSponsored(review)) {
             review.addToFakeScore(7);
         }
         if (FakeReviewTests.failsLengthTest(review)) {
-            review.addToFakeScore(2);
+            review.addToFakeScore(1);
         }
         if (FakeReviewTests.containsThreeQuestion(review)) {
-            review.addToFakeScore(-1);
+            review.addToFakeScore(-0.5);
         }
-//        if (FakeReviewTests.failsCapsTest(review)) {
-//            review.addToFakeScore(1);
-//        }
         if (FakeReviewTests.failsStopWordsTest(review)) {
             review.addToFakeScore(1);
+        }
+        if (FakeReviewTests.containsReturn(review)) {
+            review.addToFakeScore(-0.5);
+        }
+        if (FakeReviewTests.categoryIsHealth(review)) {
+            review.addToFakeScore(-0.5);
         }
     }
 }
