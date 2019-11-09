@@ -25,7 +25,7 @@ public class Review {
         this.id = id;
         this.label = label;
         this.rating = rating;
-        if (verifiedPurchase.equals("y")) {
+        if (verifiedPurchase.equals("Y")) {
             this.verifiedPurchase = true;
         } else {
             this.verifiedPurchase = false;

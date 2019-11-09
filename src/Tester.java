@@ -17,7 +17,8 @@ public class Tester {
                     correctReal++;
                 }
             } else {
-                if (review.getLabel().equals("__label2__")) {
+                if (review.getLabel().equals("__label1__")) {
+                    System.out.println(review.getId());
                     System.out.println(review.isFake());
                     System.out.println(review.getLabel());
                     System.out.println(review.getFakenessScore());
